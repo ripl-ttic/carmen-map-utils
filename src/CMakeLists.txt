@@ -8,7 +8,7 @@ include_directories(
     ${GTK2_INCLUDE_DIRS}
 )
 
-pods_install_headers(map3d_interface.h map3d.h DESTINATION carmen_map_utils)
+pods_install_headers(map3d_interface.h map3d.h DESTINATION interfaces)
 
 set(map3d_interface_sources map3d_interface.c)
 
