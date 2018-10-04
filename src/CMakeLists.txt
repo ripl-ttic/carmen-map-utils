@@ -19,8 +19,6 @@ pods_install_libraries(map3d_interface)
 pods_use_pkg_config_packages(map3d_interface
     lcm
     bot2-core
-    lcmtypes_hr-lcmtypes
-    lcmtypes_obstacle-detector
     lcmtypes_gridmap)
 
 target_link_libraries(map3d_interface
