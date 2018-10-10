@@ -85,7 +85,7 @@ carmen_map_p carmen3d_map_map3d_map_copy(ripl_map_p map);
 
 int convert_and_publish_map(carmen_map_p map_p, lcm_t *lcm, const char *name);
 
-void carmen3d_map_uncompress_lcm_map(ripl_map_t* uncompressmap, const ripl_gridmap_t* compressmsg);
+void carmen3d_map_uncompress_lcm_map(ripl_map_t* uncompressmap, const gmlcm_gridmap_t* compressmsg);
 
 carmen_point_t carmen3d_map_global_to_map_coordinates(carmen_point_t global_pt, ripl_map_t* map);
 
@@ -101,15 +101,15 @@ void carmen3d_map_change_point_update(carmen_point_t* old_pt, carmen_point_t* ne
                                           ripl_map_p new_map);
 void carmen3d_map_destroy(ripl_map_p *map);
 
-ripl_gridmap_t * carmen3d_map_create_compressed_carmen3d_gridmap_t(float *complete_map, char * map_name, ripl_gridmap_t* gmappermap, double scale, double shift);
+gmlcm_gridmap_t * carmen3d_map_create_compressed_carmen3d_gridmap_t(float *complete_map, char * map_name, gmlcm_gridmap_t* gmappermap, double scale, double shift);
 
-static inline ripl_gridmap_t *carmen3d_map_create_compressed_carmen3d_gridmap_t_from_double(double *complete_map,
-                                                                                char * map_name, ripl_gridmap_t* gmappermap, double scale, double shift) {
+static inline gmlcm_gridmap_t *carmen3d_map_create_compressed_carmen3d_gridmap_t_from_double(double *complete_map,
+                                                                                char * map_name, gmlcm_gridmap_t* gmappermap, double scale, double shift) {
     int map_size = gmappermap->config.x_size * gmappermap->config.y_size ;
     float * float_map = (float * ) malloc(map_size* sizeof(float));
     for (int i=0;i<map_size;i++)
         float_map[i]=complete_map[i];
-    ripl_gridmap_t * ret = carmen3d_map_create_compressed_carmen3d_gridmap_t(float_map, map_name, gmappermap, scale, shift);
+    gmlcm_gridmap_t * ret = carmen3d_map_create_compressed_carmen3d_gridmap_t(float_map, map_name, gmappermap, scale, shift);
     free(float_map);
     return ret;
 }
